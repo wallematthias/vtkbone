@@ -19,12 +19,15 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-
+        
+      - name: List Repository Contents
+        run: ls -R
+        
       - name: Set up Miniconda
         uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: n88
-          environment-file: conda-recipe/vtkbone/meta.yml  # Add the path to your environment.yml file if you have one
+          environment-file: conda-recipe/vtkbone/meta.yaml  # Add the path to your environment.y   file if you have one
 
       - name: Set up Conda
         run: |
