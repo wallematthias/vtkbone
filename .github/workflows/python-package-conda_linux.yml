@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
 
 jobs:
   build:
@@ -33,6 +35,7 @@ jobs:
 
       - name: Set up Conda and Build
         run: |
+          conda activate n88
           conda-build -c Numerics88 -c conda-forge conda-recipe/vtkbone/ --python=${{ matrix.python_version }} 
 
       - name: Copy conda build
