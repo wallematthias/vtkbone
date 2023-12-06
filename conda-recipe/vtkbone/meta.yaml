@@ -20,11 +20,11 @@ requirements:
     - ninja
     - gtest
     - python {{ python }}
-    - boost >=1.57,<=1.67
+    - boost >=1.57#,<=1.67
     - libnetcdf =4.7
     - pqctio
     - aimio
-    - vtk =8.2
+    - vtk >=8.2
     - tbb-devel
     - nose
   run:
@@ -33,7 +33,7 @@ requirements:
     - libnetcdf =4.7
     - pqctio
     - aimio
-    - vtk =8.2
+    - vtk >=8.2
 
 test:
   imports:
