@@ -3,7 +3,7 @@ name: Linux
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -12,26 +12,24 @@ jobs:
     strategy:
       matrix:
         python_version:
-          - '2.7'
-          - '3.6'
-          - '3.7'
           - '3.8'
+          - '3.9'
+          - '3.10'
+          
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v2
         with:
-          python-version: ${{ matrix.python_version }}
+          activate-environment: n88
+          environment-file: conda-recipe/vtkbone/meta.yml  # Add the path to your environment.yml file if you have one
 
       - name: Set up Conda
         run: |
-          python -m pip install conda
-          conda create -y -n n88 conda-build
-          source activate n88
-          conda-build -c Numerics88 -c conda-forge conda-recipe/vtkbone/ --variants "{'python': ['${{ matrix.python_version }}']}"
+          conda build -c Numerics88 -c conda-forge conda-recipe/vtkbone/ --variants "{'python': ['${{ matrix.python_version }}']}"
 
       - name: Copy conda build
         run: |
