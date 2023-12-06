@@ -3,7 +3,7 @@ name: Linux
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -33,10 +33,7 @@ jobs:
 
       - name: Set up Conda and Build
         run: |
-          mkdir -p $HOME/conda-recipe
-          cp -r conda-recipe/* $HOME/conda-recipe/
-          conda-build -c Numerics88 -c conda-forge $HOME/conda-recipe/
-          conda install -n n88 --use-local vtkbone
+          conda-build -c Numerics88 -c conda-forge conda-recipe/vtkbone/ --python=${{ matrix.python_version }} 
 
       - name: Copy conda build
         run: |
