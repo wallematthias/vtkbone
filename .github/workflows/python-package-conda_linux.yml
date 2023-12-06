@@ -35,7 +35,7 @@ jobs:
         run: |
           mkdir -p $HOME/conda-recipe
           cp -r conda-recipe/* $HOME/conda-recipe/
-          conda build -c Numerics88 -c conda-forge $HOME/conda-recipe/
+          conda-build -c Numerics88 -c conda-forge $HOME/conda-recipe/
           conda install -n n88 --use-local vtkbone
 
       - name: Copy conda build
