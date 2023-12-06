@@ -1,0 +1,42 @@
+name: Linux
+
+on: [push]
+
+jobs:
+  Linux:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        Python27:
+          python_version: '2.7'
+        Python36:
+          python_version: '3.6'
+        Python37:
+          python_version: '3.7'
+        Python38:
+          python_version: '3.8'
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Add conda to path
+      run: echo "##vso[task.prependpath]$CONDA/bin"
+
+    - name: Setup conda
+      run: |
+        conda create -y -n n88 conda-build
+        source activate n88
+        conda-build -c Numerics88 -c conda-forge conda-recipe/vtkbone/ --variants "{'python': ['${{ matrix.python_version }}']}"
+
+    - name: Copy conda build
+      run: |
+        mkdir -p $HOME/conda-bld/linux-64/
+        cp /usr/share/miniconda/envs/n88/conda-bld/linux-64/*.tar.bz2 $HOME/conda-bld/linux-64/
+
+    - name: Publish artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: vtkbone-Linux-${{ matrix.python_version }}
+        path: $HOME/conda-bld/linux-64/
