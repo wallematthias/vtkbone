@@ -15,13 +15,12 @@ build:
 # and we need tbb-devel because of a CMake error upstream of VTK
 requirements:
   build:
-    #- {{ compiler('cxx') }}
     - compiler_cxx
     - cmake >=3.12
     - ninja
     - gtest
     - python {{ python }}
-    - boost >=1.57,<=1.67
+    - boost >=1.57
     - libnetcdf =4.7
     - pqctio
     - aimio
