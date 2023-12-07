@@ -18,6 +18,10 @@ jobs:
           #- '3.10'
           
     steps:
+  
+      - name: Set Git Describe Tag
+        run: echo "GIT_DESCRIBE_TAG=$(git describe --tags)" >> $GITHUB_ENV
+        
       - name: Checkout Repository
         uses: actions/checkout@v2
         
