@@ -37,8 +37,8 @@ jobs:
 
       - name: Set up Conda and Build
         run: |
-          conda build -c Numerics88 -c conda-forge conda-recipe/vtkbone/ --python=${{ matrix.python_version }} 
-
+          conda-build conda-recipe/n88util/ --python=${{ matrix.python_version }}
+          
       - name: Copy conda build
         run: |
           mkdir -p $HOME/conda-bld/linux-64/
