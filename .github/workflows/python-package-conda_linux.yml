@@ -43,7 +43,7 @@ jobs:
 
       - name: Set up Conda and Build
         run: |
-          conda build conda-recipe/vtkbone -c Numerics88 -c conda-forge --python=${{ matrix.python_version }} --compiler=${{ 'gxx' }}
+          conda build conda-recipe/vtkbone -c Numerics88 -c conda-forge --python=${{ matrix.python_version }}
           
       - name: Copy conda build
         run: |
