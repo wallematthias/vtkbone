@@ -28,7 +28,9 @@ jobs:
         uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: n88
-      
+          environment-file: conda-recipe/vtkbone/meta.yaml
+          auto-activate-base: false
+          
       - run: |
           conda info
           conda list
@@ -38,7 +40,7 @@ jobs:
 
       - name: Set up Conda and Build
         run: |
-          conda build conda-recipe/n88util/ --python=${{ matrix.python_version }}
+          conda build conda-recipe/vtkbone/meta.yaml --python=${{ matrix.python_version }}
           
       - name: Copy conda build
         run: |
