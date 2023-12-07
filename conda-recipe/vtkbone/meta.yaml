@@ -19,7 +19,7 @@ requirements:
     - ninja
     - gtest
     - python {{ python }}
-    - boost >=1.57,<=1.67
+    - boost >=1.57
     - libnetcdf =4.7
     - pqctio
     - aimio
