@@ -1,7 +1,6 @@
 
 package:
   name: vtkbone
-  #version: {{ GIT_DESCRIBE_TAG | lower | replace("v","") }}
   version: "{{ GIT_DESCRIBE_TAG | lower | replace('v', '') }}"
 
 source:
@@ -20,7 +19,7 @@ requirements:
     - ninja
     - gtest
     - python {{ python }}
-    - boost >=1.57
+    - boost >=1.57,<=1.67
     - libnetcdf =4.7
     - pqctio
     - aimio
