@@ -29,8 +29,12 @@ jobs:
         with:
           activate-environment: n88
       
+      - run: |
+          conda info
+          conda list
+          
       - name: Install conda-build
-        run: conda install -n n88 -c conda-forge conda-build
+        run: conda install -c conda-forge conda-build
 
       - name: Set up Conda and Build
         run: |
