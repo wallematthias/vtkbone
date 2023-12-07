@@ -39,7 +39,7 @@ jobs:
 
       - name: Set up Conda and Build
         run: |
-          conda build conda-recipe/vtkbone/meta.yaml --python=${{ matrix.python_version }}
+          conda build conda-recipe/vtkbone --python=${{ matrix.python_version }}
           
       - name: Copy conda build
         run: |
