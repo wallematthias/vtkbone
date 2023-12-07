@@ -18,4 +18,5 @@ jobs:
         platforms: 'all'
         override: true
         dry_run: true
-        
+        git_describe_tag: ${{ steps.set-git-describe-tag.outputs.GIT_DESCRIBE_TAG }}
+
