@@ -14,7 +14,8 @@ build:
 # and we need tbb-devel because of a CMake error upstream of VTK
 requirements:
   build:
-    - {{ compiler }}
+    - gcc_linux-64
+    - gxx_linux-64
     - cmake >=3.12
     - ninja
     - gtest
